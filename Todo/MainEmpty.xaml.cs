@@ -10,33 +10,36 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Todo
 {
     /// <summary>
-    /// Логика взаимодействия для LogIn.xaml
+    /// Логика взаимодействия для MainEmpty.xaml
     /// </summary>
-    public partial class LogIn : Window
+    public partial class MainEmpty : Window
     {
-        public LogIn()
+        public MainEmpty()
         {
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var MainEmpty = new MainEmpty();
-            MainEmpty.Show();
-            this.Close();
+
+        }
+        private void Photo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Photo.ContextMenu.IsOpen = true;
+        }
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void ChangeProfilePhoto_Click(object sender, RoutedEventArgs e)
         {
-            var Registration = new Registration();
-            Registration.Show();
-            this.Close();
+
         }
     }
 }
