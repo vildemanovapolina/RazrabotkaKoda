@@ -26,7 +26,17 @@ namespace Todo
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Создание_задачи createWindow = new Создание_задачи();
+            createWindow.Owner = this;
+            createWindow.ShowDialog();
 
+            if (createWindow.NewTask != null)
+            {
+                TaskManager.AllTasks.Add(createWindow.NewTask);
+                Main mainWindow = new Main();
+                mainWindow.Show();
+                this.Close();
+            }
         }
         private void Photo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

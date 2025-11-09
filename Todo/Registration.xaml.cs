@@ -80,6 +80,9 @@ namespace Todo
             else if (Повтор.Text == "Повторите пароль") { MessageBox.Show("Неверно введены данные"); }
             else if (UR.UserRegistration(login, password, email))
             {
+                CurrentUser.Name = login;
+                CurrentUser.Login = login;
+                CurrentUser.Email = email;
                 MainEmpty main_Empty = new MainEmpty();
                 main_Empty.Show();
                 this.Close();

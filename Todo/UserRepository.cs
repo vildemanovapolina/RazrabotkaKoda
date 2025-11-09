@@ -8,6 +8,12 @@ using System.Windows;
 
 namespace Todo
 {
+    public static class CurrentUser
+    {
+        public static string Name { get; set; } = "Пользователь";
+        public static string Login { get; set; }
+        public static string Email { get; set; }
+    }
     public class UserRepository
     {
 
