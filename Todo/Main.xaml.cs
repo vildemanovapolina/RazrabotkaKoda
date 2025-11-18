@@ -31,9 +31,10 @@ namespace Todo
             TasksListBox.ItemsSource = Tasks;
             this.DataContext = this;
             FilterTasksByCategory("Дом");
+            LoadActiveTasks();
         }
        
-
+        //кнопка +
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Создание_задачи createWindow = new Создание_задачи();
@@ -51,6 +52,13 @@ namespace Todo
 
             }
         }
+        private void LoadActiveTasks()
+        {
+            Tasks.Clear();
+            var activeTasks = TaskManager.AllTasks.Where(t => !t.IsCompleted).ToList();
+            Tasks.AddRange(activeTasks);
+            TasksListBox.Items.Refresh();
+        }
         private void FilterTasksByCategory(string category)
         {
             _currentCategory = category;
@@ -61,24 +69,49 @@ namespace Todo
 
             TasksListBox.Items.Refresh();
         }
+        private void TaskCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            var checkBox = (CheckBox)sender;
+            var task = (TaskItem)checkBox.DataContext;
+            task.IsCompleted = true;
+            LoadActiveTasks();
+
+            MessageBox.Show($"Задача выполнена!");
+        }
         private void DomButton_Click(object sender, RoutedEventArgs e)
         {
-            FilterTasksByCategory("Дом");
+            _currentCategory = "Дом";
+            Tasks.Clear();
+            var domTasks = TaskManager.AllTasks.Where(t => t.Category == "Дом" && !t.IsCompleted).ToList();
+            Tasks.AddRange(domTasks);
+            TasksListBox.Items.Refresh();
         }
 
         private void RabotaButton_Click(object sender, RoutedEventArgs e)
         {
-            FilterTasksByCategory("Работа");
+            _currentCategory = "Работа";
+            Tasks.Clear();
+            var rabotaTasks = TaskManager.AllTasks.Where(t => t.Category == "Работа" && !t.IsCompleted).ToList();
+            Tasks.AddRange(rabotaTasks);
+            TasksListBox.Items.Refresh();
         }
 
         private void UchebaButton_Click(object sender, RoutedEventArgs e)
         {
-            FilterTasksByCategory("Учеба");
+            _currentCategory = "Учеба";
+            Tasks.Clear();
+            var uchebaTasks = TaskManager.AllTasks.Where(t => t.Category == "Учеба" && !t.IsCompleted).ToList();
+            Tasks.AddRange(uchebaTasks);
+            TasksListBox.Items.Refresh();
         }
 
         private void OtdihButton_Click(object sender, RoutedEventArgs e)
         {
-            FilterTasksByCategory("Отдых");
+            _currentCategory = "Отдых";
+            Tasks.Clear();
+            var otdihTasks = TaskManager.AllTasks.Where(t => t.Category == "Отдых" && !t.IsCompleted).ToList();
+            Tasks.AddRange(otdihTasks);
+            TasksListBox.Items.Refresh();
         }
 
 
@@ -109,22 +142,23 @@ namespace Todo
             DetailDate.Text = task.FormattedDate;
         }
 
+        //кнопка готово
         private void CompleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (_selectedTask != null)
+            if (TasksListBox.SelectedItem is TaskItem selectedTask)
             {
-                _selectedTask.IsCompleted = !_selectedTask.IsCompleted;
-
-                ShowTaskDetails(_selectedTask);
-                TasksListBox.Items.Refresh();
+                selectedTask.IsCompleted = true;
+                LoadActiveTasks();
+                MessageBox.Show($"Задача выполнена!");
             }
         }
+
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             if (_selectedTask != null)
             {
-                var result = MessageBox.Show($"Удалить задачу '{_selectedTask.Title}'?",
+                var result = MessageBox.Show($"Удалить задачу?",
                     "Подтверждение удаления", MessageBoxButton.YesNo);
 
                 if (result == MessageBoxResult.Yes)
@@ -156,6 +190,14 @@ namespace Todo
         private void СменаФото_Click(object sender, RoutedEventArgs e)
         {
            
+
+        }
+        //кнопка История
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            История history = new История();
+            history.Show();
+            this.Close();
 
         }
     }

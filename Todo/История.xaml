@@ -1,11 +1,11 @@
-﻿<Window x:Class="Todo.Main"
+﻿<Window x:Class="Todo.История"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Todo"
         mc:Ignorable="d"
-        Title="Main" Height="600" Width="800">
+        Title="История" Height="600" Width="800">
     <Grid>
         <Image x:Name="Photo" HorizontalAlignment="Left" Height="70" Margin="10,10,0,0" VerticalAlignment="Top" Width="80"  Source="/Снимок экрана 2025-09-19 204533.png">
             <Image.ContextMenu>
@@ -19,8 +19,8 @@
         <Button Content="Работа" HorizontalAlignment="Left" Margin="200,52,0,0" VerticalAlignment="Top" BorderBrush="White" Background="{x:Null}" Foreground="#FFE54B4B" FontSize="18" Click="RabotaButton_Click"/>
         <Button Content="Учеба" HorizontalAlignment="Left" Margin="285,52,0,0" VerticalAlignment="Top" BorderBrush="White" Background="{x:Null}" Foreground="#FF4E54BC" FontSize="18"  Click="UchebaButton_Click"/>
         <Button Content="Отдых" HorizontalAlignment="Left" Margin="359,52,0,0" VerticalAlignment="Top" BorderBrush="White" Background="{x:Null}" Foreground="#FF9D37AD" FontSize="18" Click="OtdihButton_Click"/>
-        <Button Content="Задачи" HorizontalAlignment="Left" Margin="18,166,0,0" VerticalAlignment="Top" BorderBrush="White" Background="{x:Null}" Foreground="#FF5C195D" FontSize="18"/>
-        <Button Content="История" HorizontalAlignment="Left" Margin="18,212,0,0" VerticalAlignment="Top" BorderBrush="White" Background="{x:Null}" Foreground="#FF5C195D" FontSize="18" Click="Button_Click_1"/>
+        <Button Content="Задачи" HorizontalAlignment="Left" Margin="18,166,0,0" VerticalAlignment="Top" BorderBrush="White" Background="{x:Null}" Foreground="#FF5C195D" FontSize="18" Click="Button_Click"/>
+        <Button Content="История" HorizontalAlignment="Left" Margin="18,212,0,0" VerticalAlignment="Top" BorderBrush="White" Background="{x:Null}" Foreground="#FF5C195D" FontSize="18"/>
         <Button Content="+" HorizontalAlignment="Left" Margin="26,497,0,0" VerticalAlignment="Top" Background="#FFDD5336" FontSize="20" Click="Button_Click" Foreground="White" Height="54" Width="55" BorderBrush="White">
             <Button.Resources>
                 <Style TargetType="Border">
@@ -28,24 +28,24 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <ListBox x:Name="TasksListBox" Margin="136,105,329,33" SelectionChanged="TasksListBox_SelectionChanged">
+        <ListBox x:Name="History" Margin="136,105,329,33" SelectionChanged="History_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">
                         <CheckBox Content="{Binding Title}" 
-                      IsChecked="{Binding IsCompleted}" 
-                      Checked="TaskCheckBox_Checked"
-                      Margin="5" FontSize="14"/>
+               IsChecked="True"
+               IsEnabled="False"
+               Margin="5" FontSize="14"/>
                         <TextBlock Text="{Binding DisplayTime}" 
-                          Margin="25,1,0,0" 
-                          FontSize="11" 
-                          Foreground="#666666"/>
+                   Margin="25,1,0,0" 
+                   FontSize="11" 
+                   Foreground="#666666"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Border BorderBrush="Black" BorderThickness="1" Margin="501,0,28,110" Height="369" VerticalAlignment="Bottom">
-            <StackPanel Height="368" VerticalAlignment="Center">
+        <Border BorderBrush="Black" BorderThickness="1" Margin="501,0,28,159" Height="320" VerticalAlignment="Bottom">
+            <StackPanel Height="320" VerticalAlignment="Center">
                 <Label Content="Заголовок" HorizontalAlignment="Center" FontSize="24"/>
                 <StackPanel Orientation="Horizontal" Height="26" Width="230">
                     <TextBlock x:Name="DetailTime"/>
@@ -57,20 +57,6 @@
 
                 </Border>
                 <TextBlock x:Name="DetailDescription" TextWrapping="Wrap" Height="151" Width="230"/>
-                <Button x:Name="CompleteButton" Content="Готово" Click="CompleteButton_Click" Height="40" Margin="0,0,0,5" Width="224" BorderBrush="#FFEA5656" Background="#FFEA5656" Foreground="White" FontSize="17" CommandParameter="{Binding}" >
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="15 15 5 5"/>
-                        </Style>
-                    </Button.Resources>
-                </Button>
-                <Button x:Name="DeleteButton" Content="Удалить" Click="DeleteButton_Click" Height="40" Margin="0,5,0,0" Width="224" Background="#FFEA5656" BorderBrush="#FFEA5656" Foreground="White" FontSize="17">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="5 5 15 15"/>
-                        </Style>
-                    </Button.Resources>
-                </Button>
             </StackPanel>
         </Border>
         <Label Content="{Binding UserName}" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" FontSize="16" Width="106" Height="31"/>
