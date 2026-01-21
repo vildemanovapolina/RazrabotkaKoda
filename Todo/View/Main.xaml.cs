@@ -10,21 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 
 namespace Todo
 {
     /// <summary>
-    /// Логика взаимодействия для Main.xaml
+    /// Логика взаимодействия для Main1.xaml
     /// </summary>
-    public partial class Main : Window
+    public partial class Main1 : Page
     {
         public List<TaskItem> Tasks { get; set; }
         private string _currentCategory = "Дом";
         private TaskItem _selectedTask;
         public string UserName => CurrentUser.Name;
 
-        public Main()
+        public Main1()
         {
             InitializeComponent();
             Tasks = new List<TaskItem>();
@@ -33,24 +35,26 @@ namespace Todo
             FilterTasksByCategory("Дом");
             LoadActiveTasks();
         }
-       
-        //кнопка +
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Создание_задачи createWindow = new Создание_задачи();
-            createWindow.Owner = this;
-            createWindow.ShowDialog();
+            var createPage = new Создание_задачи1();
+            var currentPage = this;
 
-            if (createWindow.NewTask != null)
+            createPage.Unloaded += (s, args) =>
             {
-                TaskManager.AllTasks.Add(createWindow.NewTask);
-                if (_currentCategory == createWindow.NewTask.Category)
+                if (createPage.NewTask != null)
                 {
-                    FilterTasksByCategory(_currentCategory);
+                    TaskManager.AllTasks.Add(createPage.NewTask);
+
+                    if (_currentCategory == createPage.NewTask.Category)
+                    {
+                        FilterTasksByCategory(_currentCategory);
+                    }
+
                 }
 
-
-            }
+            };
+            NavigationService?.Navigate(createPage);
         }
         private void LoadActiveTasks()
         {
@@ -119,7 +123,7 @@ namespace Todo
         {
             Photo.ContextMenu.IsOpen = true;
         }
-        
+
 
         private void TasksListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -182,22 +186,24 @@ namespace Todo
         }
         private void Выход_Click(object sender, RoutedEventArgs e)
         {
-            LogIn log = new LogIn();
-            log.Show();
-            this.Close();
+            var window = Window.GetWindow(this) as LogIn;
+            if (window != null)
+            {
+                window.MainFrame.Visibility = Visibility.Collapsed;
+                window.LoginFormGrid.Visibility = Visibility.Visible;
+                window.MainFrame.Navigate(null);
+            }
 
         }
         private void СменаФото_Click(object sender, RoutedEventArgs e)
         {
-           
+
 
         }
         //кнопка История
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            История history = new История();
-            history.Show();
-            this.Close();
+            NavigationService?.Navigate(new История1());
 
         }
     }

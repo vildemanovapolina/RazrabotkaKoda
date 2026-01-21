@@ -46,26 +46,29 @@ namespace Todo
                     MessageBox.Show("Пароль должен содержать минимум 6 символов.", "Ошибка");
                     return;
                 }
-                try
+            try
+            {
+                var user = UR.UserAuthenticate(email, password);
+                if (LoginFormGrid != null)
                 {
-                    var user = UR.UserAuthenticate(email, password);
-                    MainEmpty main_Empty = new MainEmpty();
-                    main_Empty.Show();
-                    this.Close();
+                    LoginFormGrid.Visibility = Visibility.Collapsed;
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Ошибка");
-                    return;
-                }
+                MainFrame.Visibility = Visibility.Visible;
+                MainFrame.Navigate(new MainEmpty1());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+                return;
+            }
             }
         
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Registration Registration = new Registration();
-            Registration.Show();
-            this.Close();
+            LoginFormGrid.Visibility = Visibility.Collapsed;
+            MainFrame.Visibility = Visibility.Visible;
+            MainFrame.Navigate(new Registration1());
         }
 
         private void Почта_TextChanged(object sender, TextChangedEventArgs e)

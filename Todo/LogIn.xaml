@@ -7,8 +7,11 @@
         mc:Ignorable="d"
         Title="LogIn" Height="620" Width="800">
 
-    <Grid Margin="0,0,0,-6">
-        <Label Content="Добро пожаловать!" HorizontalAlignment="Left" Margin="380,49,0,0" VerticalAlignment="Top" FontSize="36"/>
+        <Grid>
+        <Frame x:Name="MainFrame" 
+        NavigationUIVisibility="Hidden"/>
+        <Grid x:Name="LoginFormGrid" Margin="0,0,0,-6">
+            <Label Content="Добро пожаловать!" HorizontalAlignment="Left" Margin="380,49,0,0" VerticalAlignment="Top" FontSize="36"/>
         <Label Content="Почта" HorizontalAlignment="Left" Margin="380,168,0,0" VerticalAlignment="Top" FontSize="22"/>
         <Label Content="Пароль" HorizontalAlignment="Left" Margin="380,287,0,0" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.552,2.51"/>
         <TextBox x:Name="Почта" HorizontalAlignment="Left" Margin="380,223,0,0" TextWrapping="Wrap" Text="pangcheo0210@gmail.com&#xD;&#xA;" VerticalAlignment="Top" Width="337" FontSize="18" BorderThickness="0,0,0,1" Foreground="#FF928B8B" TextChanged="Почта_TextChanged"/>
@@ -29,6 +32,6 @@
         </Button>
         <TextBox x:Name="Password"  HorizontalAlignment="Left" Margin="380,339,0,0" TextWrapping="Wrap" Text="Введите пароль&#xD;&#xA;" VerticalAlignment="Top" Width="337" FontSize="18" BorderThickness="0,0,0,1" Foreground="#FF928B8B" TextChanged="Password_TextChanged" />
         <Label Content="Восстановить пароль" HorizontalAlignment="Left" Margin="531,393,0,0" VerticalAlignment="Top" FontSize="18"/>
-
+        </Grid>
     </Grid>
 </Window>

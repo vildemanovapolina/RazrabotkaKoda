@@ -10,24 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 
 namespace Todo
 {
     /// <summary>
-    /// Логика взаимодействия для Создание_задачи.xaml
+    /// Логика взаимодействия для Создание_задачи1.xaml
     /// </summary>
-    public partial class Создание_задачи : Window
+    public partial class Создание_задачи1 : Page
     {
         public TaskItem NewTask { get; set; }
-
-        public Создание_задачи()
+        public Создание_задачи1()
         {
             InitializeComponent();
             Дата.SelectedDate = DateTime.Today;
-
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             int hours = int.Parse((Часы.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "0");
@@ -36,26 +35,21 @@ namespace Todo
 
 
             NewTask = new TaskItem
-                {
-                    Title = Название.Text.Trim(),
-                    Category = Категория.Text.Trim(),
-                    Description = Описание.Text.Trim(),
-                    Date = Дата.SelectedDate ?? DateTime.Today,
-                    Time = time,
-                    IsCompleted = false
-                };
-            this.Close();
+            {
+                Title = Название.Text.Trim(),
+                Category = Категория.Text.Trim(),
+                Description = Описание.Text.Trim(),
+                Date = Дата.SelectedDate ?? DateTime.Today,
+                Time = time,
+                IsCompleted = false
+            };
+            NavigationService?.Navigate(new Main1());
 
 
         }
-
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             NewTask = null;
-            Close();
-
         }
-
-       
     }
 }

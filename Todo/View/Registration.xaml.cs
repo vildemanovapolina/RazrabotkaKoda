@@ -10,22 +10,22 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Todo
 {
     /// <summary>
-    /// Логика взаимодействия для Registration.xaml
+    /// Логика взаимодействия для Registration1.xaml
     /// </summary>
-    public partial class Registration : Window
+    public partial class Registration1 : Page
     {
         UserRepository UR = new UserRepository();
         Class Validate = new Class();
-        public Registration()
+        public Registration1()
         {
             InitializeComponent();
         }
-
         private void Имя_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (Имя.Text == "Введите имя пользователя") { Имя.Foreground = this.Foreground; }
@@ -61,9 +61,13 @@ namespace Todo
 
         private void BackToLogIn(object sender, RoutedEventArgs e)
         {
-            var LogIn = new LogIn();
-            LogIn.Show();
-            this.Close();
+            var window = Window.GetWindow(this) as LogIn;
+            if (window != null)
+            {
+                window.MainFrame.Visibility = Visibility.Collapsed;
+                window.LoginFormGrid.Visibility = Visibility.Visible;
+                window.MainFrame.Navigate(null);
+            }
 
         }
 
@@ -83,9 +87,7 @@ namespace Todo
                 CurrentUser.Name = login;
                 CurrentUser.Login = login;
                 CurrentUser.Email = email;
-                MainEmpty main_Empty = new MainEmpty();
-                main_Empty.Show();
-                this.Close();
+                NavigationService?.Navigate(new MainEmpty1());
             }
             else
             {
@@ -115,6 +117,7 @@ namespace Todo
             else Повтор.Foreground = Brushes.Black;
         }
 
-        
-    }
+
+    
+}
 }

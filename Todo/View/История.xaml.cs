@@ -10,23 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Todo
 {
     /// <summary>
-    /// Логика взаимодействия для История.xaml
+    /// Логика взаимодействия для История1.xaml
     /// </summary>
-    public partial class История : Window
+    public partial class История1 : Page
     {
         private List<TaskItem> _completedTasks;
         public string UserName => CurrentUser.Name;
-        public История()
+        public История1()
         {
             InitializeComponent();
             this.DataContext = this;
             FilterCompletedTasksByCategory("Дом");
-
         }
         private void LoadAllCompletedTasks()
         {
@@ -65,9 +65,7 @@ namespace Todo
         //кнопка Задачи
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Main main = new Main();
-            main.Show();
-            this.Close();
+            NavigationService?.Navigate(new Main1());
         }
         private void History_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -86,9 +84,13 @@ namespace Todo
         }
         private void Выход_Click(object sender, RoutedEventArgs e)
         {
-            LogIn log = new LogIn();
-            log.Show();
-            this.Close();
+            var window = Window.GetWindow(this) as LogIn;
+            if (window != null)
+            {
+                window.MainFrame.Visibility = Visibility.Collapsed;
+                window.LoginFormGrid.Visibility = Visibility.Visible;
+                window.MainFrame.Navigate(null);
+            }
 
         }
         private void СменаФото_Click(object sender, RoutedEventArgs e)
