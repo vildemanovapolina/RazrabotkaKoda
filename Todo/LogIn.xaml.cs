@@ -54,7 +54,7 @@ namespace Todo
                     LoginFormGrid.Visibility = Visibility.Collapsed;
                 }
                 MainFrame.Visibility = Visibility.Visible;
-                MainFrame.Navigate(new MainEmpty1());
+                MainFrame.Navigate(new Main1());
             }
             catch (Exception ex)
             {

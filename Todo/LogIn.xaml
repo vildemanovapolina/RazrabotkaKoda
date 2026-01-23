@@ -16,21 +16,67 @@
         <Label Content="Пароль" HorizontalAlignment="Left" Margin="380,287,0,0" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.552,2.51"/>
         <TextBox x:Name="Почта" HorizontalAlignment="Left" Margin="380,223,0,0" TextWrapping="Wrap" Text="pangcheo0210@gmail.com&#xD;&#xA;" VerticalAlignment="Top" Width="337" FontSize="18" BorderThickness="0,0,0,1" Foreground="#FF928B8B" TextChanged="Почта_TextChanged"/>
         <Image HorizontalAlignment="Left" Height="182" Margin="54,49,0,0" VerticalAlignment="Top" Width="190" Source="/Снимок экрана 2025-09-15 220240.png"/>
-        <Button Content="Войти" HorizontalAlignment="Left" Margin="380,448,0,0" VerticalAlignment="Top" Click="Log_In" RenderTransformOrigin="0.5,0.5" FontSize="22" Width="337" Height="50" Foreground="#FFFEFEFE" Background="#FFEA5656" BorderBrush="White">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="15 15 5 5"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Button Content="Регистрация" HorizontalAlignment="Left" Margin="380,508,0,0" VerticalAlignment="Top" FontSize="22" Width="337" Height="50" Background="#FFEA5656" Foreground="White" BorderBrush="White" Click="Button_Click_1">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5 5 15 15"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <TextBox x:Name="Password"  HorizontalAlignment="Left" Margin="380,339,0,0" TextWrapping="Wrap" Text="Введите пароль&#xD;&#xA;" VerticalAlignment="Top" Width="337" FontSize="18" BorderThickness="0,0,0,1" Foreground="#FF928B8B" TextChanged="Password_TextChanged" />
+            <Button Content="Войти" HorizontalAlignment="Left" Margin="380,448,0,0" VerticalAlignment="Top" Click="Log_In" RenderTransformOrigin="0.5,0.5" FontSize="22" Width="337" Height="50"  BorderBrush="#FFEA5656">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Foreground" Value="#FFFEFEFE"/>
+                        <Setter Property="Background" Value="#FFEA5656"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="border"
+                         Background="{TemplateBinding Background}"
+                         BorderBrush="{TemplateBinding BorderBrush}"
+                         BorderThickness="{TemplateBinding BorderThickness}"
+                         CornerRadius="15,15,5,5">
+                                        <ContentPresenter HorizontalAlignment="Center" 
+                                     VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="#FFFEFEFE"/>
+                                            <Setter Property="BorderBrush" Value="#FFEA5656"/>
+                                            <Setter Property="Foreground" Value="#FFEA5656"/>
+
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button Content="Регистрация" HorizontalAlignment="Left" Margin="380,508,0,0" VerticalAlignment="Top" FontSize="22" Width="337" Height="50"  BorderBrush="#FFEA5656" Click="Button_Click_1">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Foreground" Value="#FFFEFEFE"/>
+                        <Setter Property="Background" Value="#FFEA5656"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="border"
+             Background="{TemplateBinding Background}"
+             BorderBrush="{TemplateBinding BorderBrush}"
+             BorderThickness="{TemplateBinding BorderThickness}"
+             CornerRadius="5,5,15,15">
+                                        <ContentPresenter HorizontalAlignment="Center" 
+                         VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="#FFFEFEFE"/>
+                                            <Setter Property="BorderBrush" Value="#FFEA5656"/>
+                                            <Setter Property="Foreground" Value="#FFEA5656"/>
+
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <TextBox x:Name="Password"  HorizontalAlignment="Left" Margin="380,339,0,0" TextWrapping="Wrap" Text="Введите пароль&#xD;&#xA;" VerticalAlignment="Top" Width="337" FontSize="18" BorderThickness="0,0,0,1" Foreground="#FF928B8B" TextChanged="Password_TextChanged" />
         <Label Content="Восстановить пароль" HorizontalAlignment="Left" Margin="531,393,0,0" VerticalAlignment="Top" FontSize="18"/>
         </Grid>
     </Grid>

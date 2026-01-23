@@ -138,7 +138,7 @@ namespace Todo
         {
             var label = FindName("DetailTitle") as Label;
             if (label != null) label.Content = task.Title;
-
+            Name.Text = task.Title;
             DetailTime.Text = $"{task.Time:hh\\:mm}";
             DetailDate.Text = task.Date.ToString("dd MMMM yyyy");
             DetailDescription.Text = task.Description;

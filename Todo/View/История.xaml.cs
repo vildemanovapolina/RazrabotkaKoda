@@ -76,6 +76,7 @@ namespace Todo
         }
         private void ShowTaskDetails(TaskItem task)
         {
+            Name.Text = task.Title;
             DetailTime.Text = task.DisplayTime;
             DetailDate.Text = task.FormattedDate;
             DetailDescription.Text = string.IsNullOrEmpty(task.Description)

@@ -17,12 +17,84 @@
                 </ContextMenu>
             </Image.ContextMenu>
         </Image>
-        <Button Content="Дом" HorizontalAlignment="Left" Margin="136,52,0,0" VerticalAlignment="Top" BorderBrush="White" Background="{x:Null}" Foreground="#FF6DE511" FontSize="18" Click="DomButton_Click"/>
-        <Button Content="Работа" HorizontalAlignment="Left" Margin="200,52,0,0" VerticalAlignment="Top" BorderBrush="White" Background="{x:Null}" Foreground="#FFE54B4B" FontSize="18" Click="RabotaButton_Click"/>
-        <Button Content="Учеба" HorizontalAlignment="Left" Margin="285,52,0,0" VerticalAlignment="Top" BorderBrush="White" Background="{x:Null}" Foreground="#FF4E54BC" FontSize="18"  Click="UchebaButton_Click"/>
-        <Button Content="Отдых" HorizontalAlignment="Left" Margin="359,52,0,0" VerticalAlignment="Top" BorderBrush="White" Background="{x:Null}" Foreground="#FF9D37AD" FontSize="18" Click="OtdihButton_Click"/>
-        <Button Content="Задачи" HorizontalAlignment="Left" Margin="18,166,0,0" VerticalAlignment="Top" BorderBrush="White" Background="{x:Null}" Foreground="#FF5C195D" FontSize="18" Click="Button_Click"/>
-        <Button Content="История" HorizontalAlignment="Left" Margin="18,212,0,0" VerticalAlignment="Top" BorderBrush="White" Background="{x:Null}" Foreground="#FF5C195D" FontSize="18"/>
+        <Button Content="Дом" HorizontalAlignment="Left" Margin="136,52,0,0" VerticalAlignment="Top" BorderBrush="White"  FontSize="18" Click="DomButton_Click">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Foreground" Value="#FF6DE511"/>
+                    <Setter Property="Background" Value="White"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Content="Работа" HorizontalAlignment="Left" Margin="200,52,0,0" VerticalAlignment="Top" BorderBrush="White"  FontSize="18" Click="RabotaButton_Click">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Foreground" Value="#FFE54B4B"/>
+                    <Setter Property="Background" Value="White"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Content="Учеба" HorizontalAlignment="Left" Margin="285,52,0,0" VerticalAlignment="Top" BorderBrush="White"  FontSize="18"  Click="UchebaButton_Click">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Foreground" Value="#FF4E54BC"/>
+                    <Setter Property="Background" Value="White"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Content="Отдых" HorizontalAlignment="Left" Margin="359,52,0,0" VerticalAlignment="Top" BorderBrush="White" FontSize="18" Click="OtdihButton_Click">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Foreground" Value="#FF9D37AD"/>
+                    <Setter Property="Background" Value="White"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Content="Задачи" HorizontalAlignment="Left" Margin="18,166,0,0" VerticalAlignment="Top" BorderBrush="White"  FontSize="18" Click="Button_Click">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Foreground" Value="#FF5C195D"/>
+                    <Setter Property="Background" Value="White"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Content="История" HorizontalAlignment="Left" Margin="18,212,0,0" VerticalAlignment="Top" BorderBrush="White"  FontSize="18">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Foreground" Value="#FF5C195D"/>
+                    <Setter Property="Background" Value="White"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
         <Button Content="+" HorizontalAlignment="Left" Margin="26,497,0,0" VerticalAlignment="Top" Background="#FFDD5336" FontSize="20" Click="Button_Click" Foreground="White" Height="54" Width="55" BorderBrush="White">
             <Button.Resources>
                 <Style TargetType="Border">
@@ -48,7 +120,14 @@
         </ListBox>
         <Border BorderBrush="Black" BorderThickness="1" Margin="501,0,28,159" Height="320" VerticalAlignment="Bottom">
             <StackPanel Height="320" VerticalAlignment="Center">
-                <Label Content="Заголовок" HorizontalAlignment="Center" FontSize="24"/>
+                <TextBlock x:Name="Name" HorizontalAlignment="Center" 
+                VerticalAlignment="Top"
+                FontSize="24" 
+                FontWeight="Bold"
+                Margin="0,5,0,5"
+                Width="230"
+                Height="35"
+                TextAlignment="Center"/>
                 <StackPanel Orientation="Horizontal" Height="26" Width="230">
                     <TextBlock x:Name="DetailTime"/>
                 </StackPanel>

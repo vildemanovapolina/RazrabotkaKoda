@@ -19,12 +19,35 @@
         </Image>
         <Label Content="Добро пожаловать!" HorizontalAlignment="Left" Margin="164,70,0,0" VerticalAlignment="Top" FontSize="36"/>
         <Label Content="Создайте свою первую&#xD;&#xA;задачу!" HorizontalAlignment="Left" Margin="164,168,0,0" VerticalAlignment="Top" FontSize="36" Width="529"/>
-        <Button Content="Создать первую задачу" HorizontalAlignment="Center" Margin="0,344,0,0" VerticalAlignment="Top" Background="#FFEA5656" FontSize="20" Click="Button_Click" Foreground="White" Height="41" Width="244" BorderBrush="White">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="7 7 7 7"/>
+        <Button Content="Создать первую задачу" HorizontalAlignment="Center" Margin="0,344,0,0" VerticalAlignment="Top"  FontSize="20" Click="Button_Click"  Height="41" Width="244" BorderBrush="#FFEA5656">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Foreground" Value="#FFFEFEFE"/>
+                    <Setter Property="Background" Value="#FFEA5656"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="border"
+Background="{TemplateBinding Background}"
+BorderBrush="{TemplateBinding BorderBrush}"
+BorderThickness="{TemplateBinding BorderThickness}"
+CornerRadius="15,15,15,15">
+                                    <ContentPresenter HorizontalAlignment="Center" 
+            VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#FFFEFEFE"/>
+                                        <Setter Property="BorderBrush" Value="#FFEA5656"/>
+                                        <Setter Property="Foreground" Value="#FFEA5656"/>
+
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
                 </Style>
-            </Button.Resources>
+            </Button.Style>
         </Button>
 
     </Grid>
